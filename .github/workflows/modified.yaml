@@ -14,6 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # CINTENT >> INSERT_CINTENT
+      - uses: JavidDitty/setup-cintent@3638849e94bdb037f0a405375686a8550e6df904
+        with:
+          nonblocking: true
+
       - name: Setup / build docs
         run: |
           sudo chmod -R 777 .
@@ -22,9 +27,6 @@ jobs:
           python3 -m pip install beautifulsoup4 ipython jinja2==3.0.0 nbconvert==5.6.1 ipython_genutils --progress-bar off
           ./scripts/build_docs.sh -b
           cd website
-
-      # CINTENT >> INSERT_CINTENT
-      - uses: JavidDitty/setup-cintent@3e5b2faf83a2ad32c22a1cd0f86f5f20ea53a5ab
 
       # CINTENT >> INSERT_CINTENT
       - name: Upload CIntent Artifacts
